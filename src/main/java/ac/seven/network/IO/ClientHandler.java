@@ -13,32 +13,36 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.example.objectecho;
+package ac.seven.network.IO;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.handler.ssl.SslHandler;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import static io.netty.channel.ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE;
 
-/**
- * Handler implementation for the object echo client.  It initiates the
- * ping-pong traffic between the object echo client and server by sending the
- * first message to the server.
- */
-public class ObjectEchoClientHandler extends ChannelInboundHandlerAdapter {
+public class ClientHandler extends ChannelInboundHandlerAdapter {
 
     private final List<Integer> firstMessage;
 
     /**
      * Creates a client-side handler.
      */
-    public ObjectEchoClientHandler() {
-        firstMessage = new ArrayList<Integer>(ObjectEchoClient.SIZE);
-        for (int i = 0; i < ObjectEchoClient.SIZE; i ++) {
+
+    private CompletableFuture<Channel> channel;
+    public ClientHandler(CompletableFuture<Channel> channel) {
+        this.channel = channel;
+        firstMessage = new ArrayList<Integer>(256);
+        for (int i = 0; i < 256; i ++) {
             firstMessage.add(Integer.valueOf(i));
         }
     }
@@ -46,14 +50,19 @@ public class ObjectEchoClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         // Send the first message if this handler is a client-side handler.
-        ChannelFuture future = ctx.writeAndFlush(firstMessage);
-        future.addListener(FIRE_EXCEPTION_ON_FAILURE); // Let object serialisation exceptions propagate.
+        ctx.writeAndFlush("hello");
+        try {
+            channel.complete(ctx.channel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // Let object serialisation exceptions propagate.
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         // Echo back the received object to the server.
-        ctx.write(msg);
+        System.out.println(msg);
     }
 
     @Override

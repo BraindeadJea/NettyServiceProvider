@@ -13,21 +13,36 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.example.objectecho;
+package ac.seven.network.IO;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.socket.SocketChannel;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Handles both client-side and server-side handler depending on which
  * constructor was called.
  */
-public class ObjectEchoServerHandler extends ChannelInboundHandlerAdapter {
+public class ServerHandler extends ChannelInboundHandlerAdapter {
 
+    private CompletableFuture<Channel> ch;
+    public ServerHandler(CompletableFuture<Channel> ch) {
+        this.ch = ch;
+    }
+
+
+    private boolean first = true;
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         // Echo back the received object to the client.
-        ctx.write(msg);
+        if(first) {
+            ch.complete(ctx.channel());
+            first = false;
+        }
+        System.out.println(msg);
     }
 
     @Override

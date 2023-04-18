@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d05c5569-d6c8-447f-8e9c-336467f7d208" name="Changes" comment="" />
+    <list default="true" id="d05c5569-d6c8-447f-8e9c-336467f7d208" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +20,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -26,12 +37,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Server/IdeaProjects/NettyServiceProvider/src/main/java/ac/seven/network/IO&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Server\IdeaProjects\NettyServiceProvider\src\main\java\ac\seven\network\IO" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

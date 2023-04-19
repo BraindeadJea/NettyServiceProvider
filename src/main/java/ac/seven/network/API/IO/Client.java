@@ -37,7 +37,6 @@ public final class Client {
 
 
     public CompletableFuture<Channel> run(String HOST, Integer PORT, NettyUtils.Reader clientReader) throws Exception {
-        // Configure SSL.
         CompletableFuture<Channel> channel = new CompletableFuture<>();
         new Thread(() -> {
             try {
@@ -65,8 +64,6 @@ public final class Client {
                                     p.flush();
                                 }
                             });
-
-                    // Start the connection attempt.
                     b.connect(HOST, PORT).sync().channel().closeFuture().sync();
 
                 } finally {

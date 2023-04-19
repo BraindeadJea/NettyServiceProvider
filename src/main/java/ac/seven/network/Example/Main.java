@@ -8,7 +8,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        /*=*/int port = 9999;
+        /*=*/int port = 9988;
         /*=*/String host = "127.0.0.1";
         /*=*/String clientName = "clientName";
         /*=*/String serverName = "serverName";
@@ -27,17 +27,17 @@ public class Main {
 
         /*Connecting*/
         Server server = new Server();
-        CompletableFuture<Channel> serverFutureChannel = server.run(port, serverReader);
-
+        server.run(port, serverReader);
+        Thread.sleep(5000); //wait for load
         Client client = new Client();
         CompletableFuture<Channel> clientFutureChannel = client.run(host, port, clientReader);
 
 
 
         /*서버측 커넥션*/
-        Channel serverChannel = serverFutureChannel.get();
 
         /*클라이언트측 커넥션*/
         Channel clientChannel = clientFutureChannel.get();
+
     }
 }

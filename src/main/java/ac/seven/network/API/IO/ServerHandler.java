@@ -28,23 +28,14 @@ import java.util.concurrent.CompletableFuture;
  */
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
-    private CompletableFuture<Channel> ch;
     private NettyUtils.Reader reader;
-    public ServerHandler(CompletableFuture<Channel> ch, NettyUtils.Reader reader) {
-        this.ch = ch;
+    public ServerHandler(NettyUtils.Reader reader) {
         this.reader = reader;
     }
 
-
-    private boolean first = true;
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        // Echo back the received object to the client.
-        if(first) {
-            ch.complete(ctx.channel());
-            first = false;
-        }
-        reader.reader(msg);
+        this.reader.reader(ctx, msg);
     }
 
     @Override

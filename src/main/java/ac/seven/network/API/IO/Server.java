@@ -34,12 +34,14 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
 import javax.net.ssl.SSLException;
+import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
 public final class Server {
 
-    public CompletableFuture<Channel> run(Integer PORT, NettyUtils.Reader reader) throws Exception {
-        CompletableFuture<Channel> channel = new CompletableFuture<>();
+    private HashMap<String, Channel> connections = new HashMap<>();
+
+    public void run(Integer PORT, NettyUtils.Reader reader) throws Exception {
         new Thread(()-> {
             EventLoopGroup bossGroup = null;
             EventLoopGroup workerGroup = null;
@@ -61,12 +63,10 @@ public final class Server {
                                 p.addLast(
                                         new ObjectEncoder(),
                                         new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                                        new ServerHandler(channel, reader));
+                                        new ServerHandler(reader));
                                 p.flush();
                             }
                         });
-
-                // Bind and start to accept incoming connections.
                 b.bind(PORT).sync().channel().closeFuture().sync();
             } catch (InterruptedException | SSLException e) {
                 e.printStackTrace();
@@ -75,7 +75,5 @@ public final class Server {
                 workerGroup.shutdownGracefully();
             }
         }).start();
-        // Configure SSL.
-        return channel;
     }
 }

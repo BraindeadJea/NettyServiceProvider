@@ -21,44 +21,32 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 
-    private final List<Integer> firstMessage;
-
-    /**
-     * Creates a client-side handler.
-     */
-
     private CompletableFuture<Channel> channel;
     private NettyUtils.Reader reader;
-    public ClientHandler(CompletableFuture<Channel> channel, NettyUtils.Reader clientReader) {
+    public ClientHandler(CompletableFuture<Channel> channel, NettyUtils.Reader reader) {
         this.channel = channel;
-        firstMessage = new ArrayList<Integer>(256);
-        for (int i = 0; i < 256; i ++) {
-            firstMessage.add(Integer.valueOf(i));
-        }
-        this.reader = clientReader;
+        this.reader = reader;
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        // Send the first message if this handler is a client-side handler.
-        ctx.writeAndFlush("hello");
         try {
+            ctx.writeAndFlush(new Object());
             channel.complete(ctx.channel());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Let object serialisation exceptions propagate.
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        // Echo back the received object to the server.
-        this.reader.reader(msg);
+        this.reader.reader(ctx, msg);
     }
 
     @Override

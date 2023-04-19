@@ -12,20 +12,12 @@ public class NettyUtils {
 
     public interface Reader {
 
-        public default void reader(ChannelHandlerContext channel, Object info) {
+        abstract void reader(ChannelHandlerContext channel, Object info);
 
-        }
+        abstract void setName(String Name);
 
-        public default void setName(String Name) {
+        abstract Reader newInstance(String Name);
 
-        }
-
-        public default NettyUtils.Reader newInstance(String Name) {
-            return null;
-        }
-
-        public default String getName() {
-            return null;
-        }
+        abstract String getName();
     }
 }

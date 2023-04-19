@@ -13,8 +13,9 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package ac.seven.network.IO;
+package ac.seven.network.API.IO;
 
+import ac.seven.network.API.NettyUtils;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -37,7 +38,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class Server {
 
-    public CompletableFuture<Channel> run(Integer PORT) throws Exception {
+    public CompletableFuture<Channel> run(Integer PORT, NettyUtils.Reader reader) throws Exception {
         CompletableFuture<Channel> channel = new CompletableFuture<>();
         new Thread(()-> {
             EventLoopGroup bossGroup = null;
@@ -60,7 +61,7 @@ public final class Server {
                                 p.addLast(
                                         new ObjectEncoder(),
                                         new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                                        new ServerHandler(channel));
+                                        new ServerHandler(channel, reader));
                                 p.flush();
                             }
                         });

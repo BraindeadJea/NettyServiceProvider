@@ -13,12 +13,12 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package ac.seven.network.IO;
+package ac.seven.network.API.IO;
 
+import ac.seven.network.API.NettyUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.socket.SocketChannel;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -29,8 +29,10 @@ import java.util.concurrent.CompletableFuture;
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     private CompletableFuture<Channel> ch;
-    public ServerHandler(CompletableFuture<Channel> ch) {
+    private NettyUtils.Reader reader;
+    public ServerHandler(CompletableFuture<Channel> ch, NettyUtils.Reader reader) {
         this.ch = ch;
+        this.reader = reader;
     }
 
 
@@ -42,7 +44,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             ch.complete(ctx.channel());
             first = false;
         }
-        System.out.println(msg);
+        reader.reader(msg);
     }
 
     @Override

@@ -4,19 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d05c5569-d6c8-447f-8e9c-336467f7d208" name="Changes" comment="">
+    <list default="true" id="d05c5569-d6c8-447f-8e9c-336467f7d208" name="Changes" comment="0001">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/API/NettyUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/Example/ExampleClientReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/Example/ExampleServerReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/API/IO/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/API/IO/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/API/IO/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/IO/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/API/IO/ServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/seven/network/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/seven/network/Example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,6 +69,29 @@
       <option name="presentableId" value="Default" />
       <updated>1681816840530</updated>
     </task>
+    <task id="LOCAL-00001" summary="0001">
+      <created>1681859060843</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681859060843</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="0001" />
+    <option name="LAST_COMMIT_MESSAGE" value="0001" />
   </component>
 </project>

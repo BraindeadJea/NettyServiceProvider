@@ -13,22 +13,16 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package ac.seven.network.IO;
+package ac.seven.network.API.IO;
 
+import ac.seven.network.API.NettyUtils;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.ssl.SslHandler;
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
-import static io.netty.channel.ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE;
 
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 
@@ -39,12 +33,14 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
      */
 
     private CompletableFuture<Channel> channel;
-    public ClientHandler(CompletableFuture<Channel> channel) {
+    private NettyUtils.Reader reader;
+    public ClientHandler(CompletableFuture<Channel> channel, NettyUtils.Reader clientReader) {
         this.channel = channel;
         firstMessage = new ArrayList<Integer>(256);
         for (int i = 0; i < 256; i ++) {
             firstMessage.add(Integer.valueOf(i));
         }
+        this.reader = clientReader;
     }
 
     @Override
@@ -62,7 +58,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         // Echo back the received object to the server.
-        System.out.println(msg);
+        this.reader.reader(msg);
     }
 
     @Override
